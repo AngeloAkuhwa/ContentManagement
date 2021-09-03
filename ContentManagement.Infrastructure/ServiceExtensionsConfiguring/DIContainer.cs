@@ -1,0 +1,26 @@
+﻿using ContentManagement.Application.Contracts;
+using ContentManagement.Application.Contracts.IRepositories;
+using ContentManagement.Infrastructure.ServiceImplementations;
+using ContentManagement.Persistence.Repositories;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ContentManagement.Infrastructure.ServiceExtensionsConfiguring
+{
+    public static class DIContainer
+    {
+        public static void AddDependencyInjection(this IServiceCollection services)
+        {
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IJWTService, JWTService>();
+            services.AddScoped<IIMageService, ImageService>();
+            services.AddScoped<IPhoneNumberRepository, PhoneNumberRepository>();
+            services.AddScoped<IDapperRepository, DapperRepository>();
+            services.AddScoped<IPhoneNumberService, PhoneNumberService>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IAddressService, AddressService>();
+        }
+    }
+}

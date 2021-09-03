@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ContentManagement.Application\ContentManagement.Application.csproj" />
+    <ProjectReference Include="..\ContentManagement.Identity\ContentManagement.Identity.csproj" />
+    <ProjectReference Include="..\ContentManagement.Infrastructure\ContentManagement.Infrastructure.csproj" />
+    <ProjectReference Include="..\ContentManagement.Model\ContentManagement.Domain.csproj" />
+    <ProjectReference Include="..\ContentManagement.Persistence\ContentManagement.Persistence.csproj" />
+  </ItemGroup>
+
+
+</Project>
