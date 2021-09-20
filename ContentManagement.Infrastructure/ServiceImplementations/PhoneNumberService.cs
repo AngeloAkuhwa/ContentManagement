@@ -1,17 +1,13 @@
 ﻿using AutoMapper;
 using ContactManagement.Domain.Entities;
 using ContentManagement.Application.Contracts;
-using ContentManagement.Application.Contracts.IRepositories;
-using ContentManagement.Application.CustomExceptions;
 using ContentManagement.Application.DataTransfer;
+using ContentManagement.Application.Persistence.Repositories.Interfaces;
 using ContentManagement.Domain.Commons;
 using ContentManagement.Identity;
-using MainMarket.Application.Validations;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ContentManagement.Infrastructure.ServiceImplementations
@@ -20,13 +16,13 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
     {
         private readonly IPhoneNumberRepository _phoneRepo;
         private readonly IMapper _mapper;
-        public PhoneNumberService(IServiceProvider provider)
+
+        public PhoneNumberService(IPhoneNumberRepository phoneRepo, IMapper mapper)
         {
-            _phoneRepo = provider.GetRequiredService<IPhoneNumberRepository>();
-            _mapper = provider.GetRequiredService<IMapper>();
+            _phoneRepo = phoneRepo ?? throw new ArgumentNullException(nameof(phoneRepo));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-      
         public  Response<List<AddPhoneNumberDTO>> RetrievePhoneNumberByName(string fullName)
         {
             var response = new Response<List<AddPhoneNumberDTO>>();
@@ -47,15 +43,6 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
 
         public async Task<Response<AddPhoneNumberDTO>> StorePhoneNumber(AppUser loggedInUser, AddPhoneNumberDTO dto)
         {
-
-            var validity = await ValidateHelper.PhoneNumberValidator(dto);
-            var hasValidationErrors = validity.FirstOrDefault(e => e.HasValidationErrors);
-
-            if (hasValidationErrors != null)
-            {
-                throw new BadRequestException(validity, "Request object does not contain the required data");
-            }
-
             Response<AddPhoneNumberDTO> response = new Response<AddPhoneNumberDTO>();
 
             if (loggedInUser != null)
@@ -150,14 +137,6 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
         public async Task<Response<bool>> UpdatePhoneNumber(AppUser user, string phoneNumberId, AddPhoneNumberDTO dto)
         {
             Response<bool> response = new Response<bool>();
-
-            var validity = await ValidateHelper.PhoneNumberValidator(dto);
-            var hasValidationErrors = validity.FirstOrDefault(e => e.HasValidationErrors);
-
-            if (hasValidationErrors != null)
-            {
-                throw new BadRequestException(validity, "Request object does not contain the required data");
-            }
 
             var phone =await  _phoneRepo.Get(phoneNumberId);
 

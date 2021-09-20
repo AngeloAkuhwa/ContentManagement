@@ -5,13 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<PackageReference Include="Dapper" Version="2.0.90" />
+	<PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9" />
+	<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+	<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ContentManagement.Application\ContentManagement.Application.csproj" />
-    <ProjectReference Include="..\ContentManagement.Persistence\ContentManagement.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

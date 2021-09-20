@@ -1,9 +1,9 @@
-﻿using ContentManagement.Application.Contracts.IRepositories;
+﻿using ContentManagement.Application.Persistence.Repositories.Interfaces;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace ContentManagement.Persistence.Repositories
+namespace ContentManagement.Infrastructure.Repositories
 {
     public class DapperRepository : IDapperRepository
     {
@@ -11,7 +11,7 @@ namespace ContentManagement.Persistence.Repositories
         private IDbConnection dbConnection;
         public DapperRepository(IConfiguration configuration)
         {
-            this.Configuration = configuration;
+            Configuration = configuration;
             dbConnection = new SqlConnection(Configuration.GetConnectionString("ContactConnection"));
         }
         public IDbConnection GetConnectionString()

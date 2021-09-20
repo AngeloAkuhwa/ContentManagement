@@ -1,4 +1,4 @@
-﻿using CloudinaryImageCrudHandler.DTO;
+﻿using ContentManagement.Application.DataTransfer;
 using ContentManagement.Domain.Commons;
 using ContentManagement.Identity;
 using Microsoft.AspNetCore.Http;

@@ -1,6 +1,6 @@
-﻿using ContactManagement.Domain.Entities;
-using ContentManagement.Application.DataTransfer;
+﻿using ContentManagement.Application.DataTransfer;
 using ContentManagement.Domain.Commons;
+using ContentManagement.Domain.Entities;
 using ContentManagement.Identity;
 using System.Threading.Tasks;
 

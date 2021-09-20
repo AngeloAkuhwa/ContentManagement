@@ -1,15 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace CloudinaryImageCrudHandler.DTO
+namespace ContentManagement.Application.DataTransfer
 {
     public class AddImageDTO
     {
-        [Required]
+        [Required(ErrorMessage = "input field can not be empty")]
         public IFormFile Image { get; set; }
     }
 }

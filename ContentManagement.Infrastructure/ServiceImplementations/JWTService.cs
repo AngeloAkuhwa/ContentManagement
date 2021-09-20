@@ -2,7 +2,6 @@
 using ContentManagement.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -17,11 +16,13 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
     {
         private readonly IConfiguration configuration;
         private readonly UserManager<AppUser> _userManager;
-        public JWTService(IServiceProvider serviceProvider)
+
+        public JWTService(IConfiguration configuration, UserManager<AppUser> userManager)
         {
-            configuration = serviceProvider.GetRequiredService<IConfiguration>();
-            _userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
+            this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         }
+
         public async Task<string> GenerateToken(AppUser user)
         {
             var authClaims = new List<Claim>

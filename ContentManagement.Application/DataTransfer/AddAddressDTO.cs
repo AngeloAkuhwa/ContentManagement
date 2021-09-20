@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ContentManagement.Application.DataTransfer
 {
     public class AddAddressDTO
     {
 
-        [Required]
+        [Required(ErrorMessage = "input field can not be empty")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "only letters are required")]
         public string StreetInfo { get; set; }
 
         [Required]
@@ -17,13 +15,16 @@ namespace ContentManagement.Application.DataTransfer
         [Required]
         public bool IsActive { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "input field can not be empty")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "only letters are required")]
         public string City { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "input field can not be empty")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "only letters are required")]
         public string State { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "input field can not be empty")]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "only letters are required")]
         public string Country { get; set; }
     }
 }

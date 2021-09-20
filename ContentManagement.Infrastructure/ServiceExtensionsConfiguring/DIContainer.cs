@@ -1,11 +1,8 @@
 ﻿using ContentManagement.Application.Contracts;
-using ContentManagement.Application.Contracts.IRepositories;
+using ContentManagement.Application.Persistence.Repositories.Interfaces;
+using ContentManagement.Infrastructure.Repositories;
 using ContentManagement.Infrastructure.ServiceImplementations;
-using ContentManagement.Persistence.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ContentManagement.Infrastructure.ServiceExtensionsConfiguring
 {

@@ -1,9 +1,9 @@
 ﻿using ContentManagement.Domain;
 using System.ComponentModel.DataAnnotations;
 
-namespace ContactManagement.Domain.Entities
+namespace ContentManagement.Domain.Entities
 {
-    public class Address:BaseEntity
+    public class Address : BaseEntity
     {
 
         [Required]

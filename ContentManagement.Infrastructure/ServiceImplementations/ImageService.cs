@@ -1,7 +1,7 @@
 ﻿using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using ContentManagement.Application.Contracts;
-using ContentManagement.Application.Utilities;
+using ContentManagement.Infrastructure.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -16,6 +16,7 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
         private readonly AccountSettings _accountSettings;
         private readonly Cloudinary _cloudinary;
         private readonly IConfiguration _configuration;
+
         public ImageService(IOptions<AccountSettings> options, IConfiguration config)
         {
             _configuration = config;

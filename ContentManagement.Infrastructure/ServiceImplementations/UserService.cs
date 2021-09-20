@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
-using CloudinaryImageCrudHandler.DTO;
 using ContentManagement.Application.Contracts;
-using ContentManagement.Application.CustomExceptions;
+using ContentManagement.Application.DataTransfer;
 using ContentManagement.Domain.Commons;
 using ContentManagement.Identity;
 using FacilityManagement.Services.API.Policy;
-using MainMarket.Application.Validations;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +19,12 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
         private readonly IMapper _mapper;
         private readonly IIMageService _imageService;
 
-        public UserService(IServiceProvider provider)
+        public UserService(UserManager<AppUser> userMgr, IJWTService jwtService, IMapper mapper, IIMageService imageService)
         {
-            _userMgr = provider.GetRequiredService<UserManager<AppUser>>();
-            _mapper = provider.GetRequiredService<IMapper>();
-            _jwtService = provider.GetRequiredService<IJWTService>();
-            _imageService = provider.GetRequiredService<IIMageService>();
+            _userMgr = userMgr ?? throw new ArgumentNullException(nameof(userMgr));
+            _jwtService = jwtService ?? throw new ArgumentNullException(nameof(jwtService));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _imageService = imageService ?? throw new ArgumentNullException(nameof(imageService));
         }
 
         public async Task<Response<CreateUserDTO>> RegisterUserAsyn(CreateUserDTO model)
@@ -37,15 +33,6 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
             model.IsProfileCompleted = false;
             model.PublicId = null;
             model.AvatarUrl = null;
-
-            var validity = await ValidateHelper.CreateUserValidator(model);
-            var hasValidationErrors = validity.FirstOrDefault(e => e.HasValidationErrors);
-
-            if (hasValidationErrors != null)
-            {
-                throw new BadRequestException(validity, "Request object does not contain the required data");
-            }
-
 
             var result = await IsUserAlreadyExistAsync(model.Email);
 
@@ -60,7 +47,7 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
             response.Success = false;
             response.Data = null;
             response.StatusCode = 404;
-            response.Message = "ooops! something went wrong, Registration failed";
+            response.Message = result.Message;
             response.Success = false;
 
             return response;
@@ -132,15 +119,6 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
         {
             var response = new Response<ReturnLoggedInUserDTO>();
 
-            var validity = await ValidateHelper.LoginValidator(model);
-
-            var hasValidationErrors = validity.FirstOrDefault(e => e.HasValidationErrors);
-
-            if (hasValidationErrors != null)
-            {
-                throw new BadRequestException(validity, "Request object does not contain the required data");
-            }
-
             var user = await _userMgr.FindByEmailAsync(model.Email);
             ReturnLoggedInUserDTO returnUser = new ReturnLoggedInUserDTO();
 
@@ -159,7 +137,7 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
             }
 
             response.Message = "Invalid login details";
-            return response; throw new NotImplementedException();
+            return response; 
 
         }
 
@@ -168,15 +146,6 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
         public async Task<Response<AppUser>> AddImagAsync(AppUser user, AddImageDTO model)
         {
             var response = new Response<AppUser>();
-
-            var validity = await ValidateHelper.ImageValidator(model);
-            var hasValidationErrors = validity.FirstOrDefault(e => e.HasValidationErrors);
-
-            if (hasValidationErrors != null)
-            {
-                throw new BadRequestException(validity, "Request object does not contain the required data");
-            }
-
 
             var result = await _imageService.UploadImage(model.Image);
 

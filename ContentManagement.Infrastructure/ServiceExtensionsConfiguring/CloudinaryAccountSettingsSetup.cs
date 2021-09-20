@@ -1,4 +1,4 @@
-﻿using ContentManagement.Application.Utilities;
+﻿using ContentManagement.Infrastructure.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

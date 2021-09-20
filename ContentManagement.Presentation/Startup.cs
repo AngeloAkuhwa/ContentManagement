@@ -1,24 +1,16 @@
-using CloudinaryImageCrudHandler.Mapper;
-using ContactManagement.Persistence.ContactContextSetup;
-using ContactManagement.Persistence.DataContext;
+using ContentManagement.Application.Mapper;
 using ContentManagement.Identity.IdentityContext;
 using ContentManagement.Identity.IdentityServiceSetup;
 using ContentManagement.Identity.RoleSeeder;
+using ContentManagement.Infrastructure.Persistence;
 using ContentManagement.Infrastructure.ServiceExtensionsConfiguring;
 using ContentManagement.Presentation.ExceptionHandlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ContentManagement.Presentation
 {
@@ -32,6 +24,7 @@ namespace ContentManagement.Presentation
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        [System.Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -43,7 +36,6 @@ namespace ContentManagement.Presentation
             services.AddCloudinaryccountSettings(Configuration);
             services.AddConfigureSwagger();
             services.AddAutoMapper(typeof(AutoMapperProfiles));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

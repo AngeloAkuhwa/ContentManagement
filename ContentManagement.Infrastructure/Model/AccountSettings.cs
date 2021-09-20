@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ContentManagement.Application.Utilities
+namespace ContentManagement.Infrastructure.Model
 {
     public class AccountSettings
     {

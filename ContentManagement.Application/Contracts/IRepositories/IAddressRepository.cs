@@ -1,9 +1,9 @@
-﻿using ContactManagement.Domain.Entities;
+﻿using ContentManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ContentManagement.Application.Contracts.IRepositories
+namespace ContentManagement.Application.Persistence.Repositories.Interfaces
 {
     public interface IAddressRepository : IGenericRepository<Address>
     {

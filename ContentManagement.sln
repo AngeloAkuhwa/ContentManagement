@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentManagement.Presentation", "ContentManagement.Presentation\ContentManagement.Presentation.csproj", "{2330474A-9716-4CA7-917B-DAD16F9B4435}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentManagement.Presentation", "ContentManagement.Presentation\ContentManagement.Presentation.csproj", "{2330474A-9716-4CA7-917B-DAD16F9B4435}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentManagement.Persistence", "ContentManagement.Persistence\ContentManagement.Persistence.csproj", "{9F584C0D-3A2C-4818-84C6-9835357973AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentManagement.Domain", "ContentManagement.Model\ContentManagement.Domain.csproj", "{03BCADE8-3803-4A00-A06E-BE7DF72B46B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentManagement.Domain", "ContentManagement.Model\ContentManagement.Domain.csproj", "{03BCADE8-3803-4A00-A06E-BE7DF72B46B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentManagement.Infrastructure", "ContentManagement.Infrastructure\ContentManagement.Infrastructure.csproj", "{136E96A8-FE6C-4D09-B992-36A72540CDD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentManagement.Infrastructure", "ContentManagement.Infrastructure\ContentManagement.Infrastructure.csproj", "{136E96A8-FE6C-4D09-B992-36A72540CDD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentManagement.Application", "ContentManagement.Application\ContentManagement.Application.csproj", "{3E46A58C-E406-4653-B267-8C0D4E56F98F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentManagement.Application", "ContentManagement.Application\ContentManagement.Application.csproj", "{3E46A58C-E406-4653-B267-8C0D4E56F98F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContentManagement.Identity", "ContentManagement.Identity\ContentManagement.Identity.csproj", "{0CAC7DCC-1B82-49ED-86B6-2C1BAF11A19A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentManagement.Identity", "ContentManagement.Identity\ContentManagement.Identity.csproj", "{0CAC7DCC-1B82-49ED-86B6-2C1BAF11A19A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentManagement.Test", "ContentManagement.Test\ContentManagement.Test.csproj", "{6954ED98-0E2E-4DCF-A90F-59FA510C32F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{2330474A-9716-4CA7-917B-DAD16F9B4435}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2330474A-9716-4CA7-917B-DAD16F9B4435}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2330474A-9716-4CA7-917B-DAD16F9B4435}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F584C0D-3A2C-4818-84C6-9835357973AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F584C0D-3A2C-4818-84C6-9835357973AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F584C0D-3A2C-4818-84C6-9835357973AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F584C0D-3A2C-4818-84C6-9835357973AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{03BCADE8-3803-4A00-A06E-BE7DF72B46B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{03BCADE8-3803-4A00-A06E-BE7DF72B46B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03BCADE8-3803-4A00-A06E-BE7DF72B46B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{0CAC7DCC-1B82-49ED-86B6-2C1BAF11A19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CAC7DCC-1B82-49ED-86B6-2C1BAF11A19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CAC7DCC-1B82-49ED-86B6-2C1BAF11A19A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6954ED98-0E2E-4DCF-A90F-59FA510C32F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6954ED98-0E2E-4DCF-A90F-59FA510C32F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6954ED98-0E2E-4DCF-A90F-59FA510C32F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6954ED98-0E2E-4DCF-A90F-59FA510C32F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContentManagement.Application.Contracts.IRepositories
+namespace ContentManagement.Application.Persistence.Repositories.Interfaces
 {
-    public interface IPhoneNumberRepository: IGenericRepository<PhoneNumber>
+    public interface IPhoneNumberRepository : IGenericRepository<PhoneNumber>
     {
         public int TotalNumberOfItems { get; set; }
         public int TotalNumberOfPages { get; set; }

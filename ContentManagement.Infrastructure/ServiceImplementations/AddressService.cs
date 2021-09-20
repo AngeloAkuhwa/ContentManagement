@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
-using ContactManagement.Domain.Entities;
 using ContentManagement.Application.Contracts;
-using ContentManagement.Application.Contracts.IRepositories;
-using ContentManagement.Application.CustomExceptions;
 using ContentManagement.Application.DataTransfer;
+using ContentManagement.Application.Persistence.Repositories.Interfaces;
 using ContentManagement.Domain.Commons;
+using ContentManagement.Domain.Entities;
 using ContentManagement.Identity;
-using MainMarket.Application.Validations;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ContentManagement.Infrastructure.ServiceImplementations
@@ -18,23 +14,15 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
     {
         private readonly IAddressRepository _addressRepository;
         private readonly IMapper _mapper;
-        public AddressService(IServiceProvider provider)
+
+        public AddressService(IAddressRepository addressRepository, IMapper mapper)
         {
-            _addressRepository = provider.GetRequiredService<IAddressRepository>();
-            _mapper = provider.GetRequiredService<IMapper>();
+            _addressRepository = addressRepository ?? throw new ArgumentNullException(nameof(addressRepository));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public async Task<Response<Address>> CreateAddress(AppUser user, AddAddressDTO model)
         {
-
-            var validity = await ValidateHelper.AddressValidator(model);
-            var hasValidationErrors = validity.FirstOrDefault(e => e.HasValidationErrors);
-
-            if (hasValidationErrors != null)
-            {
-                throw new BadRequestException(validity, "Request object does not contain the required data");
-            }
-
             Response<Address> response = new Response<Address>();
 
             if(user != null)
@@ -128,15 +116,6 @@ namespace ContentManagement.Infrastructure.ServiceImplementations
 
         public async Task<Response<Address>> ModifyAddress(AppUser user, AddAddressDTO model, string addressId)
         {
-
-            var validity = await ValidateHelper.AddressValidator(model);
-
-            var hasValidationErrors = validity.FirstOrDefault(e => e.HasValidationErrors);
-
-            if (hasValidationErrors != null)
-            {
-                throw new BadRequestException(validity, "Request object does not contain the required data");
-            }
 
             Response<Address> response = new Response<Address>();
 

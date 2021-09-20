@@ -1,9 +1,8 @@
-﻿using ContactManagement.Persistence.DataContext;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ContactManagement.Persistence.ContactContextSetup
+namespace ContentManagement.Infrastructure.Persistence
 {
     public static class ContactContextSetup
     {

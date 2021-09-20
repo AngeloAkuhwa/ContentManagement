@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace ContentManagement.Application.Contracts.IRepositories
+namespace ContentManagement.Application.Persistence.Repositories.Interfaces
 {
     public interface IDapperRepository
     {
